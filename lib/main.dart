@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
+import 'pages/orders_home.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,10 +16,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // primarySwatch: Colors.blue,
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.grey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: OrderPage(),
+      // home: HomePage(),
     );
   }
 }

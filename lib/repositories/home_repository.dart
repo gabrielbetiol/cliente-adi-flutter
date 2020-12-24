@@ -2,15 +2,12 @@ import 'package:client/models/client_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class ClientesApi {
+class HomeRepository {
   static Future<List<Client>> getClients() async {
     // static List<Client> getClients() {
     final clientes = List<Client>();
 
     var url = "http://10.0.2.2:8080/api/clientes";
-    // var url = "http://10.0.2.2:5000/client/all";
-
-    // var url = 'https://jsonplaceholder.typicode.com/users';
 
     print('clientes: $clientes');
 
