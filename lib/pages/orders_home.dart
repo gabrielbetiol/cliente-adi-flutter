@@ -1,9 +1,11 @@
-import 'dart:convert';
+// import 'dart:convert';
+import 'package:client/constants.dart';
 import 'package:client/controllers/order_controller.dart';
-import 'package:client/models/order_model.dart';
-import 'package:client/repositories/order_repository.dart';
+// import 'package:client/models/order_model.dart';
+// import 'package:client/repositories/order_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+// import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class OrderPage extends StatefulWidget {
   @override
@@ -17,21 +19,17 @@ class _OrderPageState extends State<OrderPage> {
     return ListView.builder(
       itemCount: controller.dados.length,
       itemBuilder: (context, index) {
-        var cliente = controller.dados[index];
+        var ordem = controller.dados[index];
+
+        var corStatus = Constants.statusOrder.entries
+            .firstWhere((element) => element.key == ordem.status);
+
+        String dataAberturaFormatada = _dataFormatada(ordem.dataAbertura);
+        String dataFinalizacaoFormatada = _dataFormatada(ordem.dataFinalizacao);
+
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          height: 120,
-          // color: Colors.white,
-          // decoration: BoxDecoration(
-          //   boxShadow: <BoxShadow>[
-          //     BoxShadow(
-          //       color: Colors.white.withOpacity(1),
-          //       blurRadius: 1,
-          //       offset: Offset(0, 2),
-          //     ),
-          //   ],
-          // ),
-
+          height: 130,
           decoration: BoxDecoration(
             // border: Border.all(color: Colors.white, width: 2.0),
             color: Colors.white,
@@ -46,21 +44,54 @@ class _OrderPageState extends State<OrderPage> {
               ),
             ],
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(cliente.nome),
-                Text(cliente.email),
-                Text(cliente.telefone),
-              ],
-            ),
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                color: corStatus.value,
+                width: 10,
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        ordem.descricao,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      Text(dataAberturaFormatada),
+                      Text('cliente: ${ordem.cliente.nome}'),
+                      Text(ordem.preco),
+                      Text(dataFinalizacaoFormatada),
+                      Text(ordem.status),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },
     );
+  }
+
+  String _dataFormatada(String dataEntr) {
+    if (dataEntr != null) {
+      DateTime dateAbertura = DateTime.parse(dataEntr);
+      DateFormat dateFormat = DateFormat("dd/MM/yyyy");
+      String formattedDate = dateFormat.format(dateAbertura);
+      return formattedDate;
+    }
+    return '--';
+    // Convertendo a string de data pra DateTime e alterando o formato de exibição
   }
 
   _error() {
@@ -117,13 +148,14 @@ class _OrderPageState extends State<OrderPage> {
           //   IconButton(
           //     icon: Icon(
           //       Icons.refresh_outlined,
-          //       color: Colors.yellow,
+          //       color: Colors.blueGrey,
           //     ),
           //     onPressed: () {
           //       controller.start();
           //     },
           //   )
           // ],
+
           // backgroundColor: Colors.white,
           backgroundColor: Colors.blueGrey[50],
           elevation: 0,
@@ -135,30 +167,39 @@ class _OrderPageState extends State<OrderPage> {
                 Expanded(
                   child: Text(
                     // 'Ordens de Serviço',
-                    'Work Orders',
+                    'Ordens de Serviço',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 34,
+                      fontSize: 28,
                       letterSpacing: 0.27,
                       color: Colors.grey[800],
                       fontFamily: 'Prompt',
                     ),
                   ),
                 ),
-                Icon(
-                  Icons.notifications_outlined,
-                  size: 30,
-                  color: Colors.blueGrey[100],
-                ),
-                SizedBox(width: 10),
-                Container(
-                  width: 40,
-                  height: 40,
-                  child: CircleAvatar(
-                    radius: 10,
-                    backgroundImage: NetworkImage('https://picsum.photos/200'),
+                // Icon(
+                //   Icons.notifications_outlined,
+                //   size: 30,
+                //   color: Colors.blueGrey[100],
+                // ),
+                // SizedBox(width: 10),
+                // Container(
+                //   width: 40,
+                //   height: 40,
+                //   child: CircleAvatar(
+                //     radius: 10,
+                //     backgroundImage: NetworkImage('https://picsum.photos/200'),
+                //   ),
+                // ),
+                IconButton(
+                  icon: Icon(
+                    Icons.refresh_outlined,
+                    color: Colors.blueGrey,
                   ),
+                  onPressed: () {
+                    controller.start();
+                  },
                 ),
               ],
             ),

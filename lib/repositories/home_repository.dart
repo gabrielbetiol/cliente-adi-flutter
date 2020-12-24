@@ -9,14 +9,14 @@ class HomeRepository {
 
     var url = "http://10.0.2.2:8080/api/clientes";
 
-    print('clientes: $clientes');
+    // print('clientes: $clientes');
 
     // não está passando daqui>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     final response = await http.get(url);
 
-    print(response);
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    // print(response);
+    // print('Response status: ${response.statusCode}');
+    // print('Response body: ${response.body}');
 
     List listaResponse = json.decode(response.body);
 
