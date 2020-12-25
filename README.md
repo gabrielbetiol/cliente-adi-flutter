@@ -8,4 +8,4 @@ Projeto desenvolvido para a matéria de Aplicações Distribuídas (ADID6) do cu
 
 Telas:
 
-![plot](assets/images/Captura de tela de 2020-12-25 11-33-51.png)
+![plot](assets/images/orders_screen1.png)
