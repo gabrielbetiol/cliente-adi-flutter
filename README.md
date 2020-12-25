@@ -8,5 +8,5 @@ Projeto desenvolvido para a matéria de Aplicações Distribuídas (ADID6) do cu
 
 Telas:
 
-<<<<<<< HEAD
+
 ![plot](assets/images/orders_screen1.png)
