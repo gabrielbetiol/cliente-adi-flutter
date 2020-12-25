@@ -1,16 +1,11 @@
 # client
 
-A new Flutter project.
+Cliente API - Ordem de Serviço
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Projeto desenvolvido para a matéria de Aplicações Distribuídas (ADID6) do curso de Análise e Desenvolvimento de Sistemas do IFSP.
 
-A few resources to get you started if this is your first Flutter project:
+Telas:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![plot](assets/images/Captura de tela de 2020-12-25 11-33-51.png)
