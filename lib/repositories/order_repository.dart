@@ -12,9 +12,9 @@ class OrderRepository {
 
     final response = await http.get(url);
 
-    print(response);
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    // print(response);
+    // print('Response status: ${response.statusCode}');
+    // print('Response body: ${response.body}');
 
     List listaResponse = json.decode(response.body);
 
@@ -38,7 +38,7 @@ class OrderRepository {
     // orders.add(
     //     Client(nome: 'natal', email: 'nat@gmail.com', telefone: '111119995'));
 
-    print('orders>>>>>> $orders');
+    // print('orders>>>>>> $orders');
     return orders;
   }
 }

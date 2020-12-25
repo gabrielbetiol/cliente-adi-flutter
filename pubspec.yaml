@@ -66,7 +66,7 @@ flutter:
     - family: Prompt
       fonts:
         - asset: fonts/Prompt-ExtraBold.ttf
-
+        - asset: fonts/Prompt-ExtraLight.ttf
 
           # style: italic
     # - family: Trajan Pro

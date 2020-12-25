@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
+import 'order_detail_page.dart';
+
 class OrderPage extends StatefulWidget {
   @override
   _OrderPageState createState() => _OrderPageState();
@@ -58,21 +60,39 @@ class _OrderPageState extends State<OrderPage> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        ordem.descricao,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
-                      ),
-                      Text(dataAberturaFormatada),
-                      Text('cliente: ${ordem.cliente.nome}'),
-                      Text(ordem.preco),
-                      Text(dataFinalizacaoFormatada),
-                      Text(ordem.status),
-                    ],
+                  // child: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   children: [
+                  //     Text(
+                  //       ordem.descricao,
+                  //       style: TextStyle(
+                  //           fontWeight: FontWeight.bold, fontSize: 20),
+                  //     ),
+                  //     Text(dataAberturaFormatada),
+                  //     Text('cliente: ${ordem.cliente.nome}'),
+                  //     Text(ordem.preco),
+                  //     Text(dataFinalizacaoFormatada),
+                  //     Text(ordem.status),
+                  //   ],
+                  // ),
+                  child: ListTile(
+                    title: Text(
+                      ordem.descricao,
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                    subtitle: Text(dataAberturaFormatada),
+                    trailing: Icon(Icons.chevron_right),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DetailPage(ordem);
+                          },
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
