@@ -18,88 +18,94 @@ class _OrderPageState extends State<OrderPage> {
   final controller = OrderController();
 
   _sucess() {
-    return ListView.builder(
-      itemCount: controller.dados.length,
-      itemBuilder: (context, index) {
-        var ordem = controller.dados[index];
+    return RefreshIndicator(
+      onRefresh: () {
+        return controller.start();
+      },
+      child: ListView.builder(
+        itemCount: controller.dados.length,
+        itemBuilder: (context, index) {
+          var ordem = controller.dados[index];
 
-        var corStatus = Constants.statusOrder.entries
-            .firstWhere((element) => element.key == ordem.status);
+          var corStatus = Constants.statusOrder.entries
+              .firstWhere((element) => element.key == ordem.status);
 
-        String dataAberturaFormatada = _dataFormatada(ordem.dataAbertura);
-        String dataFinalizacaoFormatada = _dataFormatada(ordem.dataFinalizacao);
+          String dataAberturaFormatada = _dataFormatada(ordem.dataAbertura);
+          String dataFinalizacaoFormatada =
+              _dataFormatada(ordem.dataFinalizacao);
 
-        return Container(
-          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          height: 130,
-          decoration: BoxDecoration(
-            // border: Border.all(color: Colors.white, width: 2.0),
-            color: Colors.white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(5.0),
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            height: 130,
+            decoration: BoxDecoration(
+              // border: Border.all(color: Colors.white, width: 2.0),
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(5.0),
+              ),
+              boxShadow: <BoxShadow>[
+                new BoxShadow(
+                  color: Colors.grey[300],
+                  blurRadius: 3.0,
+                  offset: new Offset(0.0, 3.0),
+                ),
+              ],
             ),
-            boxShadow: <BoxShadow>[
-              new BoxShadow(
-                color: Colors.grey[300],
-                blurRadius: 3.0,
-                offset: new Offset(0.0, 3.0),
-              ),
-            ],
-          ),
-          child: Row(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                color: corStatus.value,
-                width: 10,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  // child: Column(
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  //   children: [
-                  //     Text(
-                  //       ordem.descricao,
-                  //       style: TextStyle(
-                  //           fontWeight: FontWeight.bold, fontSize: 20),
-                  //     ),
-                  //     Text(dataAberturaFormatada),
-                  //     Text('cliente: ${ordem.cliente.nome}'),
-                  //     Text(ordem.preco),
-                  //     Text(dataFinalizacaoFormatada),
-                  //     Text(ordem.status),
-                  //   ],
-                  // ),
-                  child: ListTile(
-                    title: Text(
-                      ordem.descricao,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  color: corStatus.value,
+                  width: 10,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                    // child: Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    //   children: [
+                    //     Text(
+                    //       ordem.descricao,
+                    //       style: TextStyle(
+                    //           fontWeight: FontWeight.bold, fontSize: 20),
+                    //     ),
+                    //     Text(dataAberturaFormatada),
+                    //     Text('cliente: ${ordem.cliente.nome}'),
+                    //     Text(ordem.preco),
+                    //     Text(dataFinalizacaoFormatada),
+                    //     Text(ordem.status),
+                    //   ],
+                    // ),
+                    child: ListTile(
+                      title: Text(
+                        ordem.descricao,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                      subtitle: Text(dataAberturaFormatada),
+                      trailing: Icon(Icons.chevron_right),
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return DetailPage(ordem);
+                            },
+                          ),
+                        );
+                      },
                     ),
-                    subtitle: Text(dataAberturaFormatada),
-                    trailing: Icon(Icons.chevron_right),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return DetailPage(ordem);
-                          },
-                        ),
-                      );
-                    },
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
