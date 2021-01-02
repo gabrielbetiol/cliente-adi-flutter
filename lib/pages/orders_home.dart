@@ -170,18 +170,6 @@ class _OrderPageState extends State<OrderPage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0), // here the desired height
         child: AppBar(
-          // actions: [
-          //   IconButton(
-          //     icon: Icon(
-          //       Icons.refresh_outlined,
-          //       color: Colors.blueGrey,
-          //     ),
-          //     onPressed: () {
-          //       controller.start();
-          //     },
-          //   )
-          // ],
-
           // backgroundColor: Colors.white,
           backgroundColor: Colors.blueGrey[50],
           elevation: 0,

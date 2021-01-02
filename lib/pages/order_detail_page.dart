@@ -141,6 +141,10 @@ class DetailPage extends StatelessWidget {
                 SizedBox(
                   height: 20.0,
                 ),
+                RaisedButton(
+                  onPressed: () {},
+                  child: Text('finalizar'),
+                )
               ],
             ),
           ),
