@@ -1,6 +1,8 @@
-import 'package:client/pages/client_page.dart';
-import 'package:client/pages/orders_home.dart';
+import 'package:client/pages/clientes/client_page.dart';
+import 'package:client/pages/ordens/orders_home.dart';
 import 'package:flutter/material.dart';
+
+import 'ordens/orders_tabs.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,8 +16,9 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
+    // OrderPage(),
+    OrdersTabs(),
     ClientPage(),
-    OrderPage(),
   ];
 
   @override
@@ -24,20 +27,21 @@ class _HomePageState extends State<HomePage> {
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
-        selectedItemColor: Colors.teal,
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.blueAccent,
         unselectedItemColor: Colors.grey,
         onTap: onTabTapped,
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'HomePage',
-            activeIcon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.handyman_outlined),
+            label: 'Ordens',
+            // activeIcon: Icon(Icons.home_outlined),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: 'Messages',
-            activeIcon: Icon(Icons.mail_outline),
+            icon: Icon(Icons.person_outline),
+            label: 'Clientes',
+            // activeIcon: Icon(Icons.mail_outline),
           ),
         ],
       ),

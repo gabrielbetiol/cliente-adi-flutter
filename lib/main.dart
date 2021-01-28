@@ -1,8 +1,8 @@
 import 'package:client/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/client_page.dart';
-import 'pages/orders_home.dart';
+import 'pages/clientes/client_page.dart';
+import 'pages/ordens/orders_home.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // primarySwatch: Colors.blue,
-        // backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: OrderPage(),

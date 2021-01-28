@@ -2,12 +2,15 @@ import 'package:client/models/client_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../constants.dart';
+
 class HomeRepository {
   static Future<List<Client>> getClients() async {
     // static List<Client> getClients() {
     final clientes = List<Client>();
 
-    var url = "http://10.0.2.2:8080/api/clientes";
+    // var url = "http://10.0.2.2:8080/api/clientes";
+    var url = Constants.baseUrl + "clientes";
 
     // print('clientes: $clientes');
 

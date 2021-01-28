@@ -14,6 +14,12 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "buttons_tabbar",
+      "rootUri": "file:///home/kowas/development/flutter/.pub-cache/hosted/pub.dartlang.org/buttons_tabbar-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "characters",
       "rootUri": "file:///home/kowas/development/flutter/.pub-cache/hosted/pub.dartlang.org/characters-1.1.0-nullsafety.3",
       "packageUri": "lib/",
@@ -164,7 +170,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-12-31T21:41:21.531219Z",
+  "generated": "2021-01-28T13:35:38.699313Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }
