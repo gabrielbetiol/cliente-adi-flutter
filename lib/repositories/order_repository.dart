@@ -50,13 +50,50 @@ class OrderRepository {
     return pedidosFilt;
   }
 
+  static Future addOrder(String descricao, double preco, int id) async {
+    var url = Constants.baseUrl + "ordens-servico";
+
+    var header = {
+      "Content-Type": "application/json",
+      'Accept': 'application/json',
+    };
+
+    Map params = {"cliente": id, "descricao": descricao, "preco": preco};
+
+    String _body = json.encode(params);
+    // print("> $_body");
+
+    var response = await http.post(url, headers: header, body: _body);
+
+    // print(response);
+    // print('Response status: ${response.statusCode}');
+    // print('Response body: ${response.body}');
+
+    if (response.statusCode == 201) {
+      print('status 200');
+    } else {
+      print('erro');
+    }
+  }
+
   Future FinishOrder(orderId) async {
     var url = Constants.baseUrl + "ordens-servico/$orderId/finalizacao";
 
     final response = await http.put(url);
 
-    // print(response);
+    print(response);
     // print('Response status: ${response.statusCode}');
     // print('Response body: ${response.body}');
   }
+
+  // Future DeleteOrder(orderId) async {
+  //   var url = Constants.baseUrl + "ordens-servico/$orderId/finalizacao";
+
+  //   final response = await http.put(url);
+
+  //   print(response);
+  //   // print('Response status: ${response.statusCode}');
+  //   // print('Response body: ${response.body}');
+  // }
+
 }

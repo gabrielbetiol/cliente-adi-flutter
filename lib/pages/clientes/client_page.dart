@@ -6,6 +6,10 @@ import 'package:client/repositories/home_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'client_detail_page.dart';
+
+import "../../string_extension.dart";
+
 class ClientPage extends StatefulWidget {
   @override
   _ClientPageState createState() => _ClientPageState();
@@ -21,44 +25,61 @@ class _ClientPageState extends State<ClientPage> {
         var cliente = controller.dados[index];
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          height: 120,
-          // color: Colors.white,
-          // decoration: BoxDecoration(
-          //   boxShadow: <BoxShadow>[
-          //     BoxShadow(
-          //       color: Colors.white.withOpacity(1),
-          //       blurRadius: 1,
-          //       offset: Offset(0, 2),
-          //     ),
-          //   ],
-          // ),
-
+          // height: 120,
           decoration: BoxDecoration(
             // border: Border.all(color: Colors.white, width: 2.0),
-            color: Colors.white,
+            color: Colors.grey[800],
+            // color: Colors.blueAccent,
             borderRadius: BorderRadius.all(
               Radius.circular(5.0),
             ),
             boxShadow: <BoxShadow>[
               new BoxShadow(
-                color: Colors.grey[300],
+                color: Colors.grey[900],
                 blurRadius: 3.0,
                 offset: new Offset(0.0, 3.0),
               ),
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(cliente.nome),
-                Text(cliente.email),
-                Text(cliente.telefone),
-              ],
-            ),
-          ),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Center(
+                child: ListTile(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ClienteDetailPage(idCliente: cliente.id);
+                        },
+                      ),
+                    );
+                  },
+                  leading: Icon(
+                    Icons.person,
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                  title: Text(
+                    cliente.nome.capitalize(),
+                    style: TextStyle(
+                      // fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  subtitle: Text(
+                    cliente.telefone,
+                    style: TextStyle(
+                      // fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.blueAccent,
+                    // size: 30,
+                  ),
+                ),
+              )),
         );
       },
     );
@@ -110,7 +131,7 @@ class _ClientPageState extends State<ClientPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Colors.white,
-      backgroundColor: Colors.blueGrey[50],
+      backgroundColor: Color.fromRGBO(18, 18, 18, 1),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0), // here the desired height
         child: AppBar(
@@ -126,7 +147,7 @@ class _ClientPageState extends State<ClientPage> {
           //   )
           // ],
           // backgroundColor: Colors.white,
-          backgroundColor: Colors.blueGrey[50],
+          backgroundColor: Color.fromRGBO(18, 18, 18, 1),
           elevation: 0,
           centerTitle: true,
           title: Padding(
@@ -140,18 +161,18 @@ class _ClientPageState extends State<ClientPage> {
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 34,
+                      fontSize: 28,
                       letterSpacing: 0.27,
-                      color: Colors.grey[800],
+                      color: Colors.white,
                       fontFamily: 'Prompt',
                     ),
                   ),
                 ),
-                Icon(
-                  Icons.notifications_outlined,
-                  size: 30,
-                  color: Colors.blueGrey[100],
-                ),
+                // Icon(
+                //   Icons.notifications_outlined,
+                //   size: 30,
+                //   color: Colors.blueGrey[100],
+                // ),
                 // SizedBox(width: 10),
                 // Container(
                 //   width: 40,

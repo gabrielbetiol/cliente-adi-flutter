@@ -18,9 +18,9 @@ class OrderController {
     }
   }
 
-  // Future add(TodoItem item) async {
-  //   await repository.add(item);
-  // }
+  Future add(String descricao, double preco, int id) async {
+    await OrderRepository.addOrder(descricao, preco, id);
+  }
 }
 
 enum OrderState { start, loading, sucess, error }
