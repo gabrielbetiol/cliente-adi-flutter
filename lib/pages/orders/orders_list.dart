@@ -7,9 +7,7 @@ import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-import 'new_order_page.dart';
 import 'order_detail_page.dart';
-import "../../string_extension.dart";
 
 class OrdersList extends StatefulWidget {
   final String status;
