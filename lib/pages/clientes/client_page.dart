@@ -1,10 +1,5 @@
-import 'dart:convert';
 import 'package:client/controllers/home_controller.dart';
-import 'package:client/models/client_model.dart';
-import 'package:client/models/order_model.dart';
-import 'package:client/repositories/home_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 import 'client_detail_page.dart';
 

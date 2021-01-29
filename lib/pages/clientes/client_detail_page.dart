@@ -4,6 +4,7 @@ import 'package:client/controllers/home_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'new_client_page.dart';
+import "../../string_extension.dart";
 
 class ClienteDetailPage extends StatefulWidget {
   int idCliente;
@@ -26,9 +27,41 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
         padding: const EdgeInsets.all(40.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Id',
+                    style: TextStyle(
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                  // Text(
+                  //   'Id ' + widget.idCliente.toString(),
+                  //   style: TextStyle(
+                  //     // fontWeight: FontWeight.bold,
+                  //     fontSize: 16,
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
+                  Text(
+                    cliente.id.toString(),
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 25,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -40,29 +73,37 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                       color: Colors.white,
                     ),
                   ),
+                  // Text(
+                  //   'Id ' + widget.idCliente.toString(),
+                  //   style: TextStyle(
+                  //     // fontWeight: FontWeight.bold,
+                  //     fontSize: 16,
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                   Text(
-                    'Id ' + widget.idCliente.toString(),
+                    cliente.nome.capitalize(),
                     style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.grey,
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  cliente.nome,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Text(
+              //     cliente.nome.capitalize(),
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,21 +116,29 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                       color: Colors.white,
                     ),
                   ),
+                  Text(
+                    cliente.email,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  cliente.email,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Text(
+              //     cliente.email,
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,19 +151,38 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                       color: Colors.white,
                     ),
                   ),
+                  Text(
+                    cliente.telefone,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  cliente.telefone,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              // Padding(
+              //   padding: const EdgeInsets.all(20.0),
+              //   child: Text(
+              //     cliente.telefone,
+              //     style: TextStyle(
+              //       fontSize: 18,
+              //       color: Colors.white,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
+              SizedBox(
+                height: 25,
               ),
+              // Text(
+              //   'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose',
+              //   style: TextStyle(
+              //     // fontWeight: FontWeight.bold,
+              //     fontSize: 16,
+              //     color: Colors.white,
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -240,7 +308,7 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                           MaterialPageRoute(
                             builder: (context) {
                               return NewClientPage(
-                                title: "Editar Cliente",
+                                title: "Editar",
                                 client: controller.cliente,
                               );
                             },
@@ -396,7 +464,7 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
           SizedBox(
             width: 5,
           ),
-          Text('Deseja deletar a O.S.?'),
+          Text('Deseja deletar cadastro?'),
         ],
       ),
       content: Text('Ao confirmar a operação não pode ser desfeita!'),

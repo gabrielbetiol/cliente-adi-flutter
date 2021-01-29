@@ -38,6 +38,11 @@ class HomeController {
   Future addClient(String mail, String phone, String nome) async {
     await HomeRepository.addClient(mail, phone, nome);
   }
+
+  Future editClient(
+      String mail, String phone, String nome, int idClient) async {
+    await HomeRepository.editClient(mail, phone, nome, idClient);
+  }
 }
 
 enum HomeState { start, loading, sucess, error }

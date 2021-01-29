@@ -75,11 +75,16 @@ class _NewOrderPageState extends State<NewOrderPage> {
               padding: EdgeInsets.all(40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
+                  Icon(
+                    Icons.handyman,
+                    size: 110,
+                    color: Colors.white,
+                  ),
                   SizedBox(
-                    height: 20,
+                    height: 50,
                   ),
                   Form(
                     key: _formKey,

@@ -41,21 +41,22 @@ class DetailPage extends StatelessWidget {
           Stack(
             children: <Widget>[
               Container(
-                  padding: EdgeInsets.only(left: 10.0),
-                  height: MediaQuery.of(context).size.height * 0.4,
-                  decoration: new BoxDecoration(
-                    image: new DecorationImage(
-                      image: new AssetImage("assets/images/repair.jpeg"),
-                      fit: BoxFit.cover,
-                    ),
-                  )),
+                padding: EdgeInsets.only(left: 10.0),
+                height: MediaQuery.of(context).size.height * 0.4,
+                decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                    image: new AssetImage("assets/images/repair.jpeg"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
               Container(
                 height: MediaQuery.of(context).size.height * 0.4,
                 padding: EdgeInsets.all(40.0),
                 width: MediaQuery.of(context).size.width,
                 decoration:
                     // BoxDecoration(color: Colors.deepPurple),
-                    BoxDecoration(color: Colors.blue[900].withOpacity(0.9)),
+                    BoxDecoration(color: Colors.blue[900].withOpacity(0.95)),
                 child: Center(
                   child: topContentText(ordem.id, dataAberturaFormatada,
                       dataFinalizacaoFormatada),
@@ -102,7 +103,7 @@ class DetailPage extends StatelessWidget {
                   height: 6.0,
                 ),
                 ListTile(
-                  tileColor: Colors.blueAccent,
+                  tileColor: Colors.grey[800],
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -120,7 +121,7 @@ class DetailPage extends StatelessWidget {
                   // O CÓDIGO ABAIXO FOI USADO PARA DEIXAR A PRIMEIRA LETRA MAIÚSCULA
                   title: Text(
                     ordem.cliente.nome.capitalize(),
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   // title: Text(ordem.cliente.nome[0].toUpperCase() +
                   //     ordem.cliente.nome.substring(1)),

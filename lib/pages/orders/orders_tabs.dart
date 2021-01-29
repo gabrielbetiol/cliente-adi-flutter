@@ -11,9 +11,10 @@ class OrdersTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text('Criar'),
         backgroundColor: Colors.blueAccent,
-        child: Icon(Icons.add),
+        icon: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -87,7 +88,7 @@ class OrdersTabs extends StatelessWidget {
             children: <Widget>[
               ButtonsTabBar(
                 backgroundColor: Colors.blueAccent,
-                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                contentPadding: EdgeInsets.symmetric(horizontal: 5),
                 buttonMargin: EdgeInsets.only(left: 10),
                 // unselectedBackgroundColor: Colors.grey[300],
                 unselectedBorderColor: Colors.grey[800],
@@ -107,7 +108,7 @@ class OrdersTabs extends StatelessWidget {
                   ),
                   Tab(
                     icon: Icon(Icons.done, color: Colors.greenAccent),
-                    text: "Fechadas".toUpperCase(),
+                    text: "Concluídas".toUpperCase(),
                   ),
                   Tab(
                     icon: Icon(Icons.dangerous, color: Colors.redAccent),

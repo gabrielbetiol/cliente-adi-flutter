@@ -76,7 +76,7 @@ class HomeRepository {
       "nome": nome,
       "email": mail,
       "telefone": phone,
-      "senha": "cli123"
+      "senha": "cli123" //é preciso setar uma senha, por isso disso
     };
 
     String _body = json.encode(params);
@@ -85,11 +85,43 @@ class HomeRepository {
     var response = await http.post(url, headers: header, body: _body);
 
     print(response);
-    print('Response status: ${response.statusCode}');
+    // print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
 
     if (response.statusCode == 201) {
       print('status 201');
+    } else {
+      print('erro');
+    }
+  }
+
+  static Future editClient(
+      String mail, String phone, String nome, int idClient) async {
+    var url = Constants.baseUrl + "clientes/$idClient";
+
+    var header = {
+      "Content-Type": "application/json",
+      'Accept': 'application/json',
+    };
+
+    Map params = {
+      "nome": nome,
+      "email": mail,
+      "telefone": phone,
+      "senha": "cli123" //é preciso setar uma senha, por isso disso
+    };
+
+    String _body = json.encode(params);
+    // print("> $_body");
+
+    var response = await http.put(url, headers: header, body: _body);
+
+    print(response);
+    // print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      print('status 200 - alterado com sucesso!');
     } else {
       print('erro');
     }

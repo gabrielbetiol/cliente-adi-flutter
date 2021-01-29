@@ -28,11 +28,14 @@ class _NewClientPageState extends State<NewClientPage> {
   final _nomeController = TextEditingController();
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  bool isEdition = false;
+
   @override
   void initState() {
     super.initState();
     if (widget.client != null) {
       initialValues(widget.client);
+      isEdition = true;
     }
   }
 
@@ -49,25 +52,18 @@ class _NewClientPageState extends State<NewClientPage> {
           backgroundColor: Color.fromRGBO(33, 33, 33, 1),
           title: Padding(
             padding: EdgeInsets.only(top: 30, left: 8, right: 8, bottom: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: Text(
-                    // 'Adicionar Cliente',
-                    widget.title,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 23,
-                      letterSpacing: 0.27,
-                      // color: Colors.grey[800],
-                      color: Colors.white,
-                      fontFamily: 'Prompt',
-                    ),
-                  ),
-                ),
-              ],
+            child: Text(
+              // 'Adicionar Cliente',
+              widget.title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 23,
+                letterSpacing: 0.27,
+                // color: Colors.grey[800],
+                color: Colors.white,
+                fontFamily: 'Prompt',
+              ),
             ),
           ),
           leading: IconButton(
@@ -85,8 +81,13 @@ class _NewClientPageState extends State<NewClientPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
+                  Icon(
+                    isEdition ? Icons.person : Icons.person_add_alt_1,
+                    size: 110,
+                    color: Colors.white,
+                  ),
                   SizedBox(
-                    height: 20,
+                    height: 50,
                   ),
                   Form(
                     key: _formKey,
@@ -187,7 +188,13 @@ class _NewClientPageState extends State<NewClientPage> {
 
                             HomeController homeController = HomeController();
 
-                            homeController.addClient(mail, phone, nome);
+                            if (isEdition) {
+                              homeController.editClient(
+                                  mail, phone, nome, widget.client.id);
+                              Navigator.pop(context);
+                            } else {
+                              homeController.addClient(mail, phone, nome);
+                            }
                             // Navigator.popAndPushNamed(context, 'HOME')
                             //     .then((value) {
                             //   setState(() {

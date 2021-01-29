@@ -9,6 +9,7 @@ import 'package:intl/intl.dart';
 
 import 'new_order_page.dart';
 import 'order_detail_page.dart';
+import "../../string_extension.dart";
 
 class OrdersList extends StatefulWidget {
   final String status;
@@ -136,6 +137,31 @@ class _OrdersListState extends State<OrdersList>
                               ),
                               Text(
                                 dataAberturaFormatada,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // mainAxisSize: MainAxisSize.min,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Cliente:',
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              Text(
+                                ordem.cliente.nome.capitalize(),
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
