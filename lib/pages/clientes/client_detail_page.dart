@@ -26,164 +26,172 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
       child: Padding(
         padding: const EdgeInsets.all(40.0),
         child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.grey[800],
+                borderRadius: BorderRadius.circular(10)),
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Id',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Id',
+                        style: TextStyle(
+                          // fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                      // Text(
+                      //   'Id ' + widget.idCliente.toString(),
+                      //   style: TextStyle(
+                      //     // fontWeight: FontWeight.bold,
+                      //     fontSize: 16,
+                      //     color: Colors.grey,
+                      //   ),
+                      // ),
+                      Text(
+                        cliente.id.toString(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Nome',
+                        style: TextStyle(
+                          // fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                      // Text(
+                      //   'Id ' + widget.idCliente.toString(),
+                      //   style: TextStyle(
+                      //     // fontWeight: FontWeight.bold,
+                      //     fontSize: 16,
+                      //     color: Colors.grey,
+                      //   ),
+                      // ),
+                      Text(
+                        cliente.nome.capitalize(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: Text(
+                  //     cliente.nome.capitalize(),
+                  //     style: TextStyle(
+                  //       fontSize: 18,
+                  //       color: Colors.white,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Email',
+                        style: TextStyle(
+                          // fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        cliente.email,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: Text(
+                  //     cliente.email,
+                  //     style: TextStyle(
+                  //       fontSize: 18,
+                  //       color: Colors.white,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 25,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Telefone',
+                        style: TextStyle(
+                          // fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        cliente.telefone,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(20.0),
+                  //   child: Text(
+                  //     cliente.telefone,
+                  //     style: TextStyle(
+                  //       fontSize: 18,
+                  //       color: Colors.white,
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
+                  SizedBox(
+                    height: 25,
                   ),
                   // Text(
-                  //   'Id ' + widget.idCliente.toString(),
+                  //   'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose',
                   //   style: TextStyle(
                   //     // fontWeight: FontWeight.bold,
                   //     fontSize: 16,
-                  //     color: Colors.grey,
+                  //     color: Colors.white,
                   //   ),
                   // ),
-                  Text(
-                    cliente.id.toString(),
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                 ],
               ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Nome',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                  // Text(
-                  //   'Id ' + widget.idCliente.toString(),
-                  //   style: TextStyle(
-                  //     // fontWeight: FontWeight.bold,
-                  //     fontSize: 16,
-                  //     color: Colors.grey,
-                  //   ),
-                  // ),
-                  Text(
-                    cliente.nome.capitalize(),
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: Text(
-              //     cliente.nome.capitalize(),
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //       color: Colors.white,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Email',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    cliente.email,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: Text(
-              //     cliente.email,
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //       color: Colors.white,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              SizedBox(
-                height: 25,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Telefone',
-                    style: TextStyle(
-                      // fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    cliente.telefone,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.all(20.0),
-              //   child: Text(
-              //     cliente.telefone,
-              //     style: TextStyle(
-              //       fontSize: 18,
-              //       color: Colors.white,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
-              SizedBox(
-                height: 25,
-              ),
-              // Text(
-              //   'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose',
-              //   style: TextStyle(
-              //     // fontWeight: FontWeight.bold,
-              //     fontSize: 16,
-              //     color: Colors.white,
-              //   ),
-              // ),
-            ],
+            ),
           ),
         ),
       ),

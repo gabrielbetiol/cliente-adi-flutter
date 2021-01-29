@@ -1,4 +1,4 @@
-#Fri Jan 29 09:58:48 BRT 2021
+#Fri Jan 29 10:16:06 BRT 2021
 base.0=/home/kowas/Documentos/faculdade/cliente-adi-flutter/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

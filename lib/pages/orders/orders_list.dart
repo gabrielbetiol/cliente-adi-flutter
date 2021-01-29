@@ -44,7 +44,8 @@ class _OrdersListState extends State<OrdersList>
 
           return Container(
             margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-            height: 130,
+            // height: 130,
+
             decoration: BoxDecoration(
               // border: Border.all(color: Colors.white, width: 2.0),
               // color: Colors.white,
@@ -61,12 +62,15 @@ class _OrdersListState extends State<OrdersList>
               ],
             ),
             child: Row(
+              // mainAxisSize: MainAxisSize.max,
               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               // crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
                   color: corStatus.value,
                   width: 10,
+                  height: 120,
+                  // constraints: BoxConstraints.expand(),
                 ),
                 SizedBox(
                   width: 10,
@@ -108,9 +112,11 @@ class _OrdersListState extends State<OrdersList>
                           ),
                           Text(
                             ordem.descricao,
+                            // "SizedBox (height: ,asdfddddddd ddd dsssssssssss aaaaaaaa sdflskdjflksd sdfjh sdjfhskjdh ",
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: 18,
                               color: Colors.white,
                             ),
                           ),
@@ -139,36 +145,36 @@ class _OrdersListState extends State<OrdersList>
                                 dataAberturaFormatada,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  // fontSize: 15,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            // mainAxisSize: MainAxisSize.min,
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Cliente:',
-                                style: TextStyle(
-                                  // fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Text(
-                                ordem.cliente.nome.capitalize(),
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
+                          // SizedBox(
+                          //   height: 10,
+                          // ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   // mainAxisSize: MainAxisSize.min,
+                          //   // crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: [
+                          //     Text(
+                          //       'Cliente:',
+                          //       style: TextStyle(
+                          //         // fontWeight: FontWeight.bold,
+                          //         fontSize: 14,
+                          //         color: Colors.grey,
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       ordem.cliente.nome.capitalize(),
+                          //       style: TextStyle(
+                          //         color: Colors.white,
+                          //         fontSize: 16,
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                         ],
                       ),
                       trailing: Icon(

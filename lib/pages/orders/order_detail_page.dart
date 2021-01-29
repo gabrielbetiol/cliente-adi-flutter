@@ -58,8 +58,8 @@ class DetailPage extends StatelessWidget {
                     // BoxDecoration(color: Colors.deepPurple),
                     BoxDecoration(color: Colors.blue[900].withOpacity(0.95)),
                 child: Center(
-                  child: topContentText(ordem.id, dataAberturaFormatada,
-                      dataFinalizacaoFormatada),
+                  child: topContentText(context, ordem.id,
+                      dataAberturaFormatada, dataFinalizacaoFormatada),
                 ),
               ),
               Positioned(
@@ -93,17 +93,92 @@ class DetailPage extends StatelessWidget {
               shrinkWrap: true,
               padding: EdgeInsets.all(40.0),
               children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Icon(
+                            Icons.event,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Data abertura",
+                                style: TextStyle(
+                                    // fontSize: 15,
+                                    color: Colors.white.withOpacity(0.7)),
+                              ),
+                              Text(
+                                dataAberturaFormatada,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    VerticalDivider(
+                      color: Colors.white,
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Icon(
+                            Icons.event_available,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 8.0,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                "Data finalização",
+                                style: TextStyle(
+                                    // fontSize: 15,
+                                    color: Colors.white.withOpacity(0.7)),
+                              ),
+                              Text(
+                                dataFinalizacaoFormatada,
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 25.0,
+                ),
                 Text(
                   "Cliente:",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.white.withOpacity(0.7),
                   ),
                 ),
                 SizedBox(
                   height: 6.0,
                 ),
                 ListTile(
-                  tileColor: Colors.grey[800],
+                  tileColor: Colors.blue[800],
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -143,7 +218,7 @@ class DetailPage extends StatelessWidget {
                     Text(
                       "Descrição:",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.white.withOpacity(0.5),
                       ),
                     ),
                     SizedBox(
@@ -172,7 +247,7 @@ class DetailPage extends StatelessWidget {
                         Text(
                           "Valor:",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.white.withOpacity(0.7),
                           ),
                         ),
                         SizedBox(
@@ -193,7 +268,7 @@ class DetailPage extends StatelessWidget {
                         Text(
                           "Status:",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.white.withOpacity(0.7),
                           ),
                         ),
                         SizedBox(
@@ -339,7 +414,7 @@ class DetailPage extends StatelessWidget {
       String formattedDate = dateFormat.format(dateAbertura);
       return formattedDate;
     }
-    return '--';
+    return '\t\t-';
     // Convertendo a string de data pra DateTime e alterando o formato de exibição
   }
 
@@ -431,112 +506,52 @@ class DetailPage extends StatelessWidget {
     );
   }
 
-  topContentText(
-      int id, String dataAberturaFormatada, String dataFinalizacaoFormatada) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 40.0),
-        Icon(
-          Icons.home_repair_service,
-          color: Colors.white,
-          size: 30.0,
-        ),
-        Container(
-          width: 90.0,
-          child: new Divider(
-            color: Colors.white,
-          ),
-        ),
-        SizedBox(height: 10.0),
-        Text(
-          'Ordem de Serviço nº $id',
-          style: TextStyle(color: Colors.white, fontSize: 25.0),
-          textAlign: TextAlign.start,
-        ),
-        SizedBox(height: 20.0),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        //   children: <Widget>[
-        //     // Expanded(flex: 1, child: levelIndicator),
-        //     Expanded(
-        //         flex: 6,
-        //         child: Padding(
-        //             padding: EdgeInsets.only(left: 5.0),
-        //             child: Text(
-        //               'Nº $id',
-        //               style: TextStyle(color: Colors.white),
-        //             ))),
-        //     // Expanded(flex: 1, child: coursePrice)
-        //   ],
-        // ),
-        Row(
+  topContentText(BuildContext context, int id, String dataAberturaFormatada,
+      String dataFinalizacaoFormatada) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  // Icon(
-                  //   Icons.event,
-                  //   color: Colors.white,
-                  // ),
-                  // SizedBox(
-                  //   width: 8.0,
-                  // ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "data abertura",
-                        style: TextStyle(
-                            fontSize: 15, color: Colors.white.withOpacity(0.7)),
-                      ),
-                      Text(
-                        dataAberturaFormatada,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            VerticalDivider(
+            // SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: 40.0),
+            Icon(
+              Icons.home_repair_service,
               color: Colors.white,
-              width: 20,
+              size: 30.0,
             ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  // Icon(
-                  //   Icons.event_available,
-                  //   color: Colors.white,
-                  // ),
-                  // SizedBox(
-                  //   width: 8.0,
-                  // ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "data finalização",
-                        style: TextStyle(
-                            fontSize: 15, color: Colors.white.withOpacity(0.7)),
-                      ),
-                      Text(
-                        dataFinalizacaoFormatada,
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ],
+            SizedBox(height: 20.0),
+            Container(
+              width: 90.0,
+              child: Divider(
+                color: Colors.white,
               ),
             ),
+            SizedBox(height: 20.0),
+            Text(
+              'Ordem de Serviço nº $id',
+              style: TextStyle(color: Colors.white, fontSize: 25.0),
+              textAlign: TextAlign.start,
+            ),
+            SizedBox(height: 20.0),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: <Widget>[
+            //     // Expanded(flex: 1, child: levelIndicator),
+            //     Expanded(
+            //         flex: 6,
+            //         child: Padding(
+            //             padding: EdgeInsets.only(left: 5.0),
+            //             child: Text(
+            //               'Nº $id',
+            //               style: TextStyle(color: Colors.white),
+            //             ))),
+            //     // Expanded(flex: 1, child: coursePrice)
+            //   ],
+            // ),
           ],
         ),
       ],
