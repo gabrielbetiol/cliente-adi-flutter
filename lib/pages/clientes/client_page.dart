@@ -134,7 +134,7 @@ class _ClientPageState extends State<ClientPage> {
       // backgroundColor: Colors.white,
       backgroundColor: Color.fromRGBO(18, 18, 18, 1),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0), // here the desired height
+        preferredSize: Size.fromHeight(80.0), // here the desired height
         child: AppBar(
           // actions: [
           //   IconButton(
@@ -152,7 +152,7 @@ class _ClientPageState extends State<ClientPage> {
           elevation: 0,
           centerTitle: true,
           title: Padding(
-            padding: EdgeInsets.only(top: 23, left: 8, right: 8, bottom: 8),
+            padding: EdgeInsets.only(top: 30, left: 0, right: 8, bottom: 8),
             child: Row(
               children: <Widget>[
                 Expanded(

@@ -27,7 +27,9 @@ class HomeRepository {
       Client c = Client.fromJson(map);
       clientes.add(c);
     }
-    print(clientes);
+    // print(clientes);
+    clientes
+        .sort((a, b) => a.nome.toLowerCase().compareTo(b.nome.toLowerCase()));
     return clientes;
   }
 

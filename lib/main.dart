@@ -1,5 +1,6 @@
 import 'package:client/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: _introScreen(),
       // home: OrdersTabs(),
       // routes: {
       //   AppRoutes.HOME: (ctx) => HomePage(), //ñ funciona
@@ -27,4 +28,56 @@ class MyApp extends StatelessWidget {
       // },
     );
   }
+}
+
+Widget _introScreen() {
+  return Scaffold(
+    body: Stack(
+      children: <Widget>[
+        SplashScreen(
+          seconds: 2,
+          gradientBackground: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.grey[900], Colors.black],
+          ),
+          navigateAfterSeconds: HomePage(),
+          loaderColor: Colors.transparent,
+        ),
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/logo3.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.transparent,
+                child: Text(
+                  // 'Ordens de Serviço',
+                  'SmartOS',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 32,
+                    letterSpacing: 0.32,
+                    // color: Colors.grey[800],
+                    color: Colors.white,
+                    fontFamily: 'Prompt',
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }

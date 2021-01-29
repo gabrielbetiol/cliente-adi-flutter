@@ -47,9 +47,9 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/kowas
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.1.0] /home/kowas/.gradle/caches/transforms-2/files-2.1/a528b13ac93e64cafa3d0480e2c93207/core-1.1.0/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /home/kowas/Documentos/faculdade/cliente-adi-flutter/android/app/src/main/AndroidManifest.xml:10:9-31
+		ADDED from /home/kowas/Documentos/faculdade/cliente-adi-flutter/android/app/src/main/AndroidManifest.xml:10:9-32
 	android:icon
-		ADDED from /home/kowas/Documentos/faculdade/cliente-adi-flutter/android/app/src/main/AndroidManifest.xml:11:9-43
+		ADDED from /home/kowas/Documentos/faculdade/cliente-adi-flutter/android/app/src/main/AndroidManifest.xml:11:9-45
 	android:name
 		ADDED from /home/kowas/Documentos/faculdade/cliente-adi-flutter/android/app/src/main/AndroidManifest.xml:9:9-57
 activity#br.com.kowas.client.MainActivity

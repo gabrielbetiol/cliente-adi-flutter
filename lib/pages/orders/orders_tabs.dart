@@ -35,7 +35,7 @@ class OrdersTabs extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           title: Padding(
-            padding: EdgeInsets.only(top: 30, left: 8, right: 8, bottom: 8),
+            padding: EdgeInsets.only(top: 30, left: 0, right: 8, bottom: 8),
             child: Row(
               children: <Widget>[
                 Expanded(
