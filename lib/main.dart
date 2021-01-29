@@ -1,12 +1,6 @@
 import 'package:client/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-import 'pages/clientes/client_page.dart';
-import 'pages/orders/orders_home.dart';
-import 'pages/orders/orders_tabs.dart';
-import 'pages/profile/profile_page.dart';
-import 'utils/app_routes.dart';
-
 void main() {
   runApp(MyApp());
 }

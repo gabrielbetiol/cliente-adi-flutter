@@ -48,4 +48,50 @@ class HomeRepository {
 
     return cliente;
   }
+
+  static Future delClient(int idClient) async {
+    print('idclient: $idClient');
+    var url = Constants.baseUrl + "clientes/$idClient";
+
+    final response = await http.delete(url);
+
+    // print(response);
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    // var listaResponse = json.decode(response.body);
+
+    // return cliente;
+  }
+
+  static Future addClient(String mail, String phone, String nome) async {
+    var url = Constants.baseUrl + "clientes";
+
+    var header = {
+      "Content-Type": "application/json",
+      'Accept': 'application/json',
+    };
+
+    Map params = {
+      "nome": nome,
+      "email": mail,
+      "telefone": phone,
+      "senha": "cli123"
+    };
+
+    String _body = json.encode(params);
+    // print("> $_body");
+
+    var response = await http.post(url, headers: header, body: _body);
+
+    print(response);
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 201) {
+      print('status 201');
+    } else {
+      print('erro');
+    }
+  }
 }

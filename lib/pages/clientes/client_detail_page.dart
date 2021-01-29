@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:client/controllers/home_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'new_client_page.dart';
 
 class ClienteDetailPage extends StatefulWidget {
   int idCliente;
@@ -27,14 +30,22 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Nome:',
+                    'Nome',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'Id ' + widget.idCliente.toString(),
+                    style: TextStyle(
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      color: Colors.grey,
                     ),
                   ),
                 ],
@@ -46,6 +57,7 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -56,9 +68,9 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Email:',
+                    'Email',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.white,
                     ),
@@ -72,6 +84,7 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -84,7 +97,7 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                   Text(
                     'Telefone',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      // fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Colors.white,
                     ),
@@ -98,6 +111,7 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -158,35 +172,6 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
     print(controller.state);
     return Scaffold(
       backgroundColor: Color.fromRGBO(33, 33, 33, 1),
-      // backgroundColor: Colors.blueGrey[50],
-
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: Icon(
-      //       Icons.arrow_back_ios,
-      //       color: Colors.blueAccent,
-      //     ),
-      //     onPressed: () => Navigator.of(context).pop(),
-      //   ),
-      //   // backgroundColor: Colors.blueGrey[50],
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   centerTitle: true,
-      //   title: Expanded(
-      //     child: Text(
-      //       // 'Ordens de Serviço',
-      //       'Informações do Cliente',
-      //       textAlign: TextAlign.left,
-      //       style: TextStyle(
-      //         fontWeight: FontWeight.bold,
-      //         fontSize: 23,
-      //         letterSpacing: 0.27,
-      //         color: Colors.grey[800],
-      //         fontFamily: 'Prompt',
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: Column(
         children: [
           Stack(
@@ -231,6 +216,120 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
           ),
         ],
       ),
+      bottomSheet: Container(
+        color: Color.fromRGBO(33, 33, 33, 1),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Visibility(
+                visible: true,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[800],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    width: 70,
+                    height: 50,
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return NewClientPage(
+                                title: "Editar Cliente",
+                                client: controller.cliente,
+                              );
+                            },
+                          ),
+                        );
+                      },
+                      // color: Color.fromRGBO(33, 33, 33, 1),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: false,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[800],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    width: 70,
+                    height: 50,
+                    child: FlatButton(
+                      onPressed: () {
+                        showAlertDialogDelete(context, widget.idCliente);
+                      },
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
+                          child: Icon(
+                            Icons.delete,
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: true,
+                child: Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.green[600],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    // width: 180,
+                    height: 50,
+                    child: FlatButton(
+                      onPressed: () async {
+                        String url = "tel:+55 ${controller.cliente.telefone}";
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        } else {
+                          print('Could not launch $url');
+                        }
+                      },
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.call,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -264,6 +363,55 @@ class _ClienteDetailPageState extends State<ClienteDetailPage> {
           ],
         ),
       ],
+    );
+  }
+
+  showAlertDialogDelete(BuildContext context, int clientId) {
+    final repository = HomeController();
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Cancelar"),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("Deletar"),
+      onPressed: () {
+        // mensagem.wasRead = true;
+        repository.deleteClient(clientId);
+        Navigator.pop(context);
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Row(
+        children: [
+          Icon(
+            Icons.dangerous,
+            color: Colors.redAccent,
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Text('Deseja deletar a O.S.?'),
+        ],
+      ),
+      content: Text('Ao confirmar a operação não pode ser desfeita!'),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }

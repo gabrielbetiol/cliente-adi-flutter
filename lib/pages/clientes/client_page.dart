@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'client_detail_page.dart';
 
 import "../../string_extension.dart";
+import 'new_client_page.dart';
 
 class ClientPage extends StatefulWidget {
   @override
@@ -19,69 +20,74 @@ class _ClientPageState extends State<ClientPage> {
   final controller = HomeController();
 
   _sucess() {
-    return ListView.builder(
-      itemCount: controller.dados.length,
-      itemBuilder: (context, index) {
-        var cliente = controller.dados[index];
-        return Container(
-          margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          // height: 120,
-          decoration: BoxDecoration(
-            // border: Border.all(color: Colors.white, width: 2.0),
-            color: Colors.grey[800],
-            // color: Colors.blueAccent,
-            borderRadius: BorderRadius.all(
-              Radius.circular(5.0),
-            ),
-            boxShadow: <BoxShadow>[
-              new BoxShadow(
-                color: Colors.grey[900],
-                blurRadius: 3.0,
-                offset: new Offset(0.0, 3.0),
-              ),
-            ],
-          ),
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Center(
-                child: ListTile(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ClienteDetailPage(idCliente: cliente.id);
-                        },
-                      ),
-                    );
-                  },
-                  leading: Icon(
-                    Icons.person,
-                    size: 30,
-                    color: Colors.white,
-                  ),
-                  title: Text(
-                    cliente.nome.capitalize(),
-                    style: TextStyle(
-                      // fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                  subtitle: Text(
-                    cliente.telefone,
-                    style: TextStyle(
-                      // fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    color: Colors.blueAccent,
-                    // size: 30,
-                  ),
-                ),
-              )),
-        );
+    return RefreshIndicator(
+      onRefresh: () {
+        return controller.start();
       },
+      child: ListView.builder(
+        itemCount: controller.dados.length,
+        itemBuilder: (context, index) {
+          var cliente = controller.dados[index];
+          return Container(
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            // height: 120,
+            decoration: BoxDecoration(
+              // border: Border.all(color: Colors.white, width: 2.0),
+              color: Colors.grey[800],
+              // color: Colors.blueAccent,
+              borderRadius: BorderRadius.all(
+                Radius.circular(5.0),
+              ),
+              boxShadow: <BoxShadow>[
+                new BoxShadow(
+                  color: Colors.grey[900],
+                  blurRadius: 3.0,
+                  offset: new Offset(0.0, 3.0),
+                ),
+              ],
+            ),
+            child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Center(
+                  child: ListTile(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ClienteDetailPage(idCliente: cliente.id);
+                          },
+                        ),
+                      );
+                    },
+                    leading: Icon(
+                      Icons.person,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                    title: Text(
+                      cliente.nome.capitalize(),
+                      style: TextStyle(
+                        // fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    subtitle: Text(
+                      cliente.telefone,
+                      style: TextStyle(
+                        // fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.blueAccent,
+                      // size: 30,
+                    ),
+                  ),
+                )),
+          );
+        },
+      ),
     );
   }
 
@@ -168,12 +174,23 @@ class _ClientPageState extends State<ClientPage> {
                     ),
                   ),
                 ),
-                // Icon(
-                //   Icons.notifications_outlined,
-                //   size: 30,
-                //   color: Colors.blueGrey[100],
-                // ),
-                // SizedBox(width: 10),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return NewClientPage();
+                        },
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.add,
+                    size: 30,
+                    // color: Colors.grey[300],
+                    color: Colors.greenAccent,
+                  ),
+                ),
                 // Container(
                 //   width: 40,
                 //   height: 40,

@@ -30,6 +30,14 @@ class HomeController {
       // print('erro!');
     }
   }
+
+  Future deleteClient(int clientId) async {
+    await HomeRepository.delClient(clientId);
+  }
+
+  Future addClient(String mail, String phone, String nome) async {
+    await HomeRepository.addClient(mail, phone, nome);
+  }
 }
 
 enum HomeState { start, loading, sucess, error }
